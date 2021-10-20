@@ -1,0 +1,36 @@
+---
+quiet: true
+verify_signatures: false
+CommitMsg:
+  HardTabs:
+    enabled: true
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail
+  BundleAudit:
+    enabled: true
+  BundleCheck:
+    enabled: true
+  BundleOutdated:
+    enabled: true
+  HardTabs:
+    enabled: true
+  JsonSyntax:
+    enabled: true
+  LineEndings:
+    enabled: true
+    eol: "\n"
+  Mdl:
+    enabled: true
+    include:
+      - "*.md"
+  Rspec:
+    enabled: false
+    required_executable: 'rspec'
+  TrailingWhitespace:
+    enabled: true
+  YamlLint:
+    enabled: true
+  YamlSyntax:
+    enabled: true

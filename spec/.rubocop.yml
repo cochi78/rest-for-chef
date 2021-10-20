@@ -1,0 +1,10 @@
+---
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0
+
+Metrics/BlockLength:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
