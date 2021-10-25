@@ -1,7 +1,7 @@
 ontap_cluster 'ontap1' do
   location 'Hannover'
   contact 'example@gmail.com'
-  name_servers '192.168.240.50'
+  name_servers '192.168.240.2'
   dns_domains 'lab.local'
   timezone 'Etc/UTC'
 end
@@ -31,7 +31,7 @@ end
 
 ontap_ems_destination 'Admin_Email' do
   type :email
-  address 'admin@lab.local'
+  destination 'admin@lab.local'
 end
 
 ontap_snmp 'Enable SNMP' do
@@ -52,5 +52,5 @@ end
 ontap_security_audit_destination '192.168.240.72' do
   port     514
   facility :local7
-  protocol :tcp_unencrypted
+  protocol :udp_unencrypted
 end

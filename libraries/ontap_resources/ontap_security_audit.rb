@@ -34,7 +34,7 @@ class Chef
 
       # API URLs and mappings
       rest_api_collection '/api/security/audit'
-      rest_api_document   '/api/security/audit?name={name}&fields=*', first_element_only: true
+      rest_api_document   '/api/security/audit'
 
       rest_property_map   %w[ontapi cli http]
     end

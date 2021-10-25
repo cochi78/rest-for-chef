@@ -26,7 +26,7 @@ class Chef
 
       # API URLs and mappings
       rest_api_collection '/api/cluster/ntp/servers'
-      rest_api_document   '/api/cluster/ntp/servers/{server}?fields=*'
+      rest_api_document   '/api/cluster/ntp/servers?server={server}?fields=*'
 
       rest_property_map   %w[server version]
     end

@@ -102,7 +102,7 @@ class Chef
                           ad_domain_ou:       'cifs.ad_domain.ou',
 
                           dns_domains:        'dns.domains',
-                          dns_servers:        'dns.name_servers',
+                          dns_servers:        'dns.servers',
 
                           fcp:                'fcp.enabled',
 

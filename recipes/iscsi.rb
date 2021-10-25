@@ -8,7 +8,7 @@ end
 
 ontap_dns 'dept-svm' do
   domains 'lab.local'
-  servers '192.168.240.1'
+  servers '192.168.240.2'
 end
 
 ontap_ip_interface 'dept-svm' do
@@ -34,7 +34,7 @@ ontap_iscsi_server 'dept-svm' do
   target_alias 'dept-svm'
 end
 
-ontap_volume 'dept-vol' do
+ontap_volume 'dept_vol' do
   svm 'dept-svm'
   aggregates 'aggr1'
 
@@ -44,11 +44,12 @@ ontap_volume 'dept-vol' do
   action [:configure, :online]
 end
 
-ontap_lun '/vol/dept-vol/lun1' do
+ontap_lun '/vol/dept_vol/lun1' do
   svm 'dept-svm'
   os_type :linux
 
   size '50MB'
+  comment 'ISCSI'
 end
 
 ontap_igroup 'linux_clients' do
@@ -60,7 +61,7 @@ end
 ontap_lun_map 'dept-svm' do
   svm 'dept-svm'
   igroup 'linux_clients'
-  lun '/vol/dept-vol/lun1'
+  lun '/vol/dept_vol/lun1'
 
   logical_unit_number 1
 end

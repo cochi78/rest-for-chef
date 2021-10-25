@@ -25,12 +25,30 @@ ontap_ip_interface 'svm1-files' do
   ip_netmask '255.255.255.0'
 end
 
+ontap_volume 'vol1' do
+  svm 'svm1'
+  aggregates 'aggr1'
+
+  comment 'CIFS Volume'
+  size '100MB'
+
+  action [:configure, :online]
+end
+
 ontap_nfs_server 'svm1' do
   protocol_v3 true
   protocol_v40 true
   protocol_v41 true
 
   protocol_v4_id_domain 'lab.local'
+end
+
+ontap_qtree 'qt1' do
+  svm 'svm1'
+  volume 'vol1'
+
+  security_style :unix
+  unix_permissions 755
 end
 
 ontap_cifs_server 'svm1' do
@@ -47,15 +65,4 @@ ontap_cifs_server 'svm1' do
   wins_servers %w(192.168.240.50)
 
   restrict_anonymous :no_access
-  smb_signing true
-  smb_encryption true
-  kdc_encryption true
-end
-
-ontap_qtree 'qt1' do
-  svm 'svm1'
-  volume 'vol1'
-
-  security_style :unix
-  unix_permissions 0755
 end

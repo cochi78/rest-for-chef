@@ -34,7 +34,7 @@ class Chef
 
       # API URLs and mappings
       rest_api_collection '/api/support/ems/destinations'
-      rest_api_document   '/api/support/ems/destinations/{name}&fields=*'
+      rest_api_document   '/api/support/ems/destinations?name={name}&fields=*', first_element_only: true
 
       rest_property_map({
                           type:        'type',
@@ -55,7 +55,7 @@ class Chef
 
       # Custom mapping
       def filters_from_json(data)
-        data.fetch('filters').map { |filter| filter['name'] }
+        data.fetch('filters', []).map { |filter| filter['name'] }
       end
 
       def filters_to_json(data)

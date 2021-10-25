@@ -47,7 +47,7 @@ class Chef
                DOC
 
       # API URLs and mappings
-      rest_api_collection '/api/security/audit/destinations'
+      rest_api_collection '/api/security/audit/destinations?force=true'
       rest_api_document   '/api/security/audit/destinations/{address}/{port}'
 
       rest_property_map   %w[address facility port protocol verify_server]

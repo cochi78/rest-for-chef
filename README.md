@@ -53,7 +53,9 @@ Since Chef 16.6, Target Mode enabled users to retrieve remote system inventory (
 
 As REST APIs follow similar paradigms as configuration management and provide structured data, implementing support for them mainly consists of mapping REST URLs/properties to Chef resources/properties.
 
-Providing a base implementation for REST and some easy to use DSL methods, enables high-speed development of resources and makes maintenance easy even for the long-term.
+Providing a base implementation for REST and some easy to use DSL methods, enables high-speed development of resources and makes maintenance easy even for the long-term. Generation of Chef resources from OpenAPI specifications is a possibility.
+
+__This approach allows all common DevOps methods to be used with REST-capable devices - NetOps, StorageOps, DatacenterOps, ...__
 
 ## Implementation Parts
 
@@ -103,6 +105,7 @@ Managing licenses sadly isn't supported in a desired state way as there is no wa
 #### Setup Steps
 
 - Set up a NetApp lab, guides can be found e.g on [Flackbox](https://www.flackbox.com/netapp-simulator)
+- If using the simulator, assign the spare disks manually to a node
 - Get Chef 17.7 or an older version with [Ohai PR-1698](https://github.com/chef/ohai/pull/1698) and [Chef PR-12151](https://github.com/chef/chef/pull/12151) applied
 - Configure `~/.chef/credentials` or `/etc/chef/credentials` for your cluster, using `target_protocol = "rest"` and `username`, `password` fields like in my [project presentation video](https://www.youtube.com/channel/UC4mVshSSLx57mGzZuRn-LhA)
 - Git clone this repository
